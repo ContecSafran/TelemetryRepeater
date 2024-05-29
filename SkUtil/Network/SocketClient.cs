@@ -195,7 +195,7 @@ namespace SkUtil.Network
             }
 		}
 
-        //µ¿±âÈ­ ÇÏ±â À§ÇØ¼­´Â ÀÌ ÇÔ¼ö ½á¾ßÇÔ
+        //ï¿½ï¿½ï¿½ï¿½È­ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         public byte[] SendToServer(byte[] _Data)
 		{
 			try
@@ -252,7 +252,7 @@ namespace SkUtil.Network
 			}
 		}
 
-        //ºñµ¿±â ½Ã ÀÌÇÔ¼ö »ç¿ë
+        //ï¿½ñµ¿±ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½
         public void OnlySendToServer(byte[] _Data)
         {
             try

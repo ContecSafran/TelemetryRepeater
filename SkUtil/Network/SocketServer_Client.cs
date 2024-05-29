@@ -78,7 +78,7 @@ namespace SkUtil.Network
 
                     //    byte[] ZodiacHeader = new byte[DefineData.CommonDefine.ZODIACHEADERSIZE];
                     //    Recv = this._ClientStream.Read(ZodiacHeader, 0, ZodiacHeader.Length);
-                    //    //Çì´õ »çÀÌÁî ¸¸Å­ ¹Þ¾Ò´ÂÁö ¿¡·¯ Ã³¸® ÇØÁà¾ßÇÔ
+                    //    //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å­ ï¿½Þ¾Ò´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     //    if (Recv != ZodiacHeader.Length)
                     //    {
                     //        return;
