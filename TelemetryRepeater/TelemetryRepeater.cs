@@ -7,6 +7,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -73,12 +76,13 @@ namespace TelemetryRepeater
         {
             if (isRunning)
             {
-                this.Close();
+                //this.Close();
+                repeater1.Stop();
             }
             else
             {
                 isRunning = true;
-                StartButton.Text = "중지 및 종료";
+                StartButton.Text = "중지";
                 repeater1.CrtIP = info.CrtIp;
                 repeater1.CrtPort = Int32.Parse(info.Port);
                 repeater1.ServerPort = Int32.Parse(info.SOSPort1);
@@ -93,7 +97,7 @@ namespace TelemetryRepeater
 
         private void TelemetryRepeater_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            /*
             if (MessageBox.Show("서버 종료 및 재시작 하시겠습니까?", "서버 종료", MessageBoxButtons.YesNo) == DialogResult.No)
             {
                 e.Cancel = true;
@@ -101,7 +105,7 @@ namespace TelemetryRepeater
             else
             {
                 Process.Start(Application.ExecutablePath);
-            }
+            }*/
         }
 
         private void TelemetryRepeater_FormClosed(object sender, FormClosedEventArgs e)
@@ -110,7 +114,7 @@ namespace TelemetryRepeater
         }
 
         private void TelemetryRepeater_Load(object sender, EventArgs e)
-        {
+        {/*
             Process[] process = Process.GetProcessesByName("TelemetryRepeater");
             Process currentProcess = Process.GetCurrentProcess();
             foreach (Process p in process)
@@ -119,7 +123,8 @@ namespace TelemetryRepeater
                     p.Kill();
             }
             Thread.Sleep(2000);
-            Start();
+            Start();*/
+            localIPComboBox.Items.AddRange(GetLocalIpAddresses());
         }
 
         private void ForcedKillButton_Click(object sender, EventArgs e)
@@ -134,6 +139,41 @@ namespace TelemetryRepeater
                     p.Kill();
                 }
             }
+        }
+
+        private void TmrInfoPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        public static string GetLocalIP()
+        {
+            string result = string.Empty;
+
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    result = ip.ToString();
+                    break;
+                }
+            }
+            return result;
+        }
+        static string[] GetLocalIpAddresses()
+        {
+            // Get the list of network interfaces for the local computer.
+            var adapters = NetworkInterface.GetAllNetworkInterfaces();
+
+            // Return the list of local IPv4 addresses excluding the local
+            // host, disconnected, and virtual addresses.
+            return (from adapter in adapters
+                    let properties = adapter.GetIPProperties()
+                    from address in properties.UnicastAddresses
+                    where address.Address.AddressFamily == AddressFamily.InterNetwork &&
+                          !address.Address.Equals(IPAddress.Loopback)
+                    select address.Address.ToString()).ToArray();
         }
     }
 }

@@ -31,23 +31,31 @@ namespace TelemetryRepeater
         {
             this.TmrSplitContainer = new System.Windows.Forms.SplitContainer();
             this.TmrInfoPanel = new System.Windows.Forms.Panel();
+            this.PortText = new System.Windows.Forms.TextBox();
+            this.PortLabel = new System.Windows.Forms.Label();
+            this.IPText = new System.Windows.Forms.TextBox();
+            this.IPLabel = new System.Windows.Forms.Label();
+            this.CrtGroupBox = new System.Windows.Forms.GroupBox();
+            this.ClientGroupBox = new System.Windows.Forms.GroupBox();
+            this.ForcedKillButton = new System.Windows.Forms.Button();
             this.OpenDirectoryButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SOSPort1TextBox = new System.Windows.Forms.TextBox();
             this.SOSPort1Label = new System.Windows.Forms.Label();
             this.StartButton = new System.Windows.Forms.Button();
             this.SaveInfoButton = new System.Windows.Forms.Button();
-            this.PortText = new System.Windows.Forms.TextBox();
-            this.PortLabel = new System.Windows.Forms.Label();
-            this.IPText = new System.Windows.Forms.TextBox();
-            this.IPLabel = new System.Windows.Forms.Label();
             this.LogTextBox = new System.Windows.Forms.TextBox();
-            this.ForcedKillButton = new System.Windows.Forms.Button();
+            this.LocalGroupBox = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.localIPComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.TmrSplitContainer)).BeginInit();
             this.TmrSplitContainer.Panel1.SuspendLayout();
             this.TmrSplitContainer.Panel2.SuspendLayout();
             this.TmrSplitContainer.SuspendLayout();
             this.TmrInfoPanel.SuspendLayout();
+            this.ClientGroupBox.SuspendLayout();
+            this.LocalGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // TmrSplitContainer
@@ -70,26 +78,93 @@ namespace TelemetryRepeater
             // 
             // TmrInfoPanel
             // 
-            this.TmrInfoPanel.Controls.Add(this.ForcedKillButton);
-            this.TmrInfoPanel.Controls.Add(this.OpenDirectoryButton);
-            this.TmrInfoPanel.Controls.Add(this.label1);
-            this.TmrInfoPanel.Controls.Add(this.SOSPort1TextBox);
-            this.TmrInfoPanel.Controls.Add(this.SOSPort1Label);
-            this.TmrInfoPanel.Controls.Add(this.StartButton);
-            this.TmrInfoPanel.Controls.Add(this.SaveInfoButton);
+            this.TmrInfoPanel.Controls.Add(this.LocalGroupBox);
             this.TmrInfoPanel.Controls.Add(this.PortText);
             this.TmrInfoPanel.Controls.Add(this.PortLabel);
             this.TmrInfoPanel.Controls.Add(this.IPText);
             this.TmrInfoPanel.Controls.Add(this.IPLabel);
+            this.TmrInfoPanel.Controls.Add(this.CrtGroupBox);
+            this.TmrInfoPanel.Controls.Add(this.ClientGroupBox);
+            this.TmrInfoPanel.Controls.Add(this.ForcedKillButton);
+            this.TmrInfoPanel.Controls.Add(this.OpenDirectoryButton);
+            this.TmrInfoPanel.Controls.Add(this.label1);
+            this.TmrInfoPanel.Controls.Add(this.StartButton);
+            this.TmrInfoPanel.Controls.Add(this.SaveInfoButton);
             this.TmrInfoPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TmrInfoPanel.Location = new System.Drawing.Point(0, 0);
             this.TmrInfoPanel.Name = "TmrInfoPanel";
             this.TmrInfoPanel.Size = new System.Drawing.Size(1073, 137);
             this.TmrInfoPanel.TabIndex = 0;
+            this.TmrInfoPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TmrInfoPanel_Paint);
+            // 
+            // PortText
+            // 
+            this.PortText.Location = new System.Drawing.Point(71, 62);
+            this.PortText.Name = "PortText";
+            this.PortText.ReadOnly = true;
+            this.PortText.Size = new System.Drawing.Size(93, 21);
+            this.PortText.TabIndex = 5;
+            // 
+            // PortLabel
+            // 
+            this.PortLabel.AutoSize = true;
+            this.PortLabel.Location = new System.Drawing.Point(36, 68);
+            this.PortLabel.Name = "PortLabel";
+            this.PortLabel.Size = new System.Drawing.Size(27, 12);
+            this.PortLabel.TabIndex = 4;
+            this.PortLabel.Text = "Port";
+            this.PortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // IPText
+            // 
+            this.IPText.Location = new System.Drawing.Point(71, 35);
+            this.IPText.Name = "IPText";
+            this.IPText.ReadOnly = true;
+            this.IPText.Size = new System.Drawing.Size(93, 21);
+            this.IPText.TabIndex = 3;
+            // 
+            // IPLabel
+            // 
+            this.IPLabel.AutoSize = true;
+            this.IPLabel.Location = new System.Drawing.Point(36, 41);
+            this.IPLabel.Name = "IPLabel";
+            this.IPLabel.Size = new System.Drawing.Size(16, 12);
+            this.IPLabel.TabIndex = 2;
+            this.IPLabel.Text = "IP";
+            this.IPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CrtGroupBox
+            // 
+            this.CrtGroupBox.Location = new System.Drawing.Point(24, 17);
+            this.CrtGroupBox.Name = "CrtGroupBox";
+            this.CrtGroupBox.Size = new System.Drawing.Size(156, 80);
+            this.CrtGroupBox.TabIndex = 14;
+            this.CrtGroupBox.TabStop = false;
+            this.CrtGroupBox.Text = "CRT";
+            // 
+            // ClientGroupBox
+            // 
+            this.ClientGroupBox.Controls.Add(this.label2);
+            this.ClientGroupBox.Location = new System.Drawing.Point(368, 8);
+            this.ClientGroupBox.Name = "ClientGroupBox";
+            this.ClientGroupBox.Size = new System.Drawing.Size(165, 80);
+            this.ClientGroupBox.TabIndex = 13;
+            this.ClientGroupBox.TabStop = false;
+            this.ClientGroupBox.Text = "Client";
+            // 
+            // ForcedKillButton
+            // 
+            this.ForcedKillButton.Location = new System.Drawing.Point(948, 17);
+            this.ForcedKillButton.Name = "ForcedKillButton";
+            this.ForcedKillButton.Size = new System.Drawing.Size(113, 77);
+            this.ForcedKillButton.TabIndex = 12;
+            this.ForcedKillButton.Text = "강제종료";
+            this.ForcedKillButton.UseVisualStyleBackColor = true;
+            this.ForcedKillButton.Click += new System.EventHandler(this.ForcedKillButton_Click);
             // 
             // OpenDirectoryButton
             // 
-            this.OpenDirectoryButton.Location = new System.Drawing.Point(448, 6);
+            this.OpenDirectoryButton.Location = new System.Drawing.Point(823, 17);
             this.OpenDirectoryButton.Name = "OpenDirectoryButton";
             this.OpenDirectoryButton.Size = new System.Drawing.Size(113, 77);
             this.OpenDirectoryButton.TabIndex = 11;
@@ -100,7 +175,7 @@ namespace TelemetryRepeater
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 100);
+            this.label1.Location = new System.Drawing.Point(212, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(321, 12);
             this.label1.TabIndex = 10;
@@ -109,25 +184,25 @@ namespace TelemetryRepeater
             // 
             // SOSPort1TextBox
             // 
-            this.SOSPort1TextBox.Location = new System.Drawing.Point(118, 62);
+            this.SOSPort1TextBox.Location = new System.Drawing.Point(39, 42);
             this.SOSPort1TextBox.Name = "SOSPort1TextBox";
             this.SOSPort1TextBox.ReadOnly = true;
-            this.SOSPort1TextBox.Size = new System.Drawing.Size(78, 21);
+            this.SOSPort1TextBox.Size = new System.Drawing.Size(100, 21);
             this.SOSPort1TextBox.TabIndex = 9;
             // 
             // SOSPort1Label
             // 
             this.SOSPort1Label.AutoSize = true;
-            this.SOSPort1Label.Location = new System.Drawing.Point(12, 68);
+            this.SOSPort1Label.Location = new System.Drawing.Point(6, 48);
             this.SOSPort1Label.Name = "SOSPort1Label";
-            this.SOSPort1Label.Size = new System.Drawing.Size(100, 12);
+            this.SOSPort1Label.Size = new System.Drawing.Size(27, 12);
             this.SOSPort1Label.TabIndex = 8;
-            this.SOSPort1Label.Text = "SosPort1(TMUA)";
+            this.SOSPort1Label.Text = "Port";
             this.SOSPort1Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(329, 6);
+            this.StartButton.Location = new System.Drawing.Point(704, 17);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(113, 77);
             this.StartButton.TabIndex = 7;
@@ -137,49 +212,13 @@ namespace TelemetryRepeater
             // 
             // SaveInfoButton
             // 
-            this.SaveInfoButton.Location = new System.Drawing.Point(202, 6);
+            this.SaveInfoButton.Location = new System.Drawing.Point(577, 17);
             this.SaveInfoButton.Name = "SaveInfoButton";
             this.SaveInfoButton.Size = new System.Drawing.Size(121, 77);
             this.SaveInfoButton.TabIndex = 6;
             this.SaveInfoButton.Text = "서버 정보 수정";
             this.SaveInfoButton.UseVisualStyleBackColor = true;
             this.SaveInfoButton.Click += new System.EventHandler(this.SaveInfoButton_Click);
-            // 
-            // PortText
-            // 
-            this.PortText.Location = new System.Drawing.Point(47, 35);
-            this.PortText.Name = "PortText";
-            this.PortText.ReadOnly = true;
-            this.PortText.Size = new System.Drawing.Size(149, 21);
-            this.PortText.TabIndex = 5;
-            // 
-            // PortLabel
-            // 
-            this.PortLabel.AutoSize = true;
-            this.PortLabel.Location = new System.Drawing.Point(12, 41);
-            this.PortLabel.Name = "PortLabel";
-            this.PortLabel.Size = new System.Drawing.Size(27, 12);
-            this.PortLabel.TabIndex = 4;
-            this.PortLabel.Text = "Port";
-            this.PortLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // IPText
-            // 
-            this.IPText.Location = new System.Drawing.Point(47, 8);
-            this.IPText.Name = "IPText";
-            this.IPText.ReadOnly = true;
-            this.IPText.Size = new System.Drawing.Size(149, 21);
-            this.IPText.TabIndex = 3;
-            // 
-            // IPLabel
-            // 
-            this.IPLabel.AutoSize = true;
-            this.IPLabel.Location = new System.Drawing.Point(12, 14);
-            this.IPLabel.Name = "IPLabel";
-            this.IPLabel.Size = new System.Drawing.Size(16, 12);
-            this.IPLabel.TabIndex = 2;
-            this.IPLabel.Text = "IP";
-            this.IPLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LogTextBox
             // 
@@ -191,15 +230,46 @@ namespace TelemetryRepeater
             this.LogTextBox.Size = new System.Drawing.Size(1073, 215);
             this.LogTextBox.TabIndex = 1;
             // 
-            // ForcedKillButton
+            // LocalGroupBox
             // 
-            this.ForcedKillButton.Location = new System.Drawing.Point(957, 6);
-            this.ForcedKillButton.Name = "ForcedKillButton";
-            this.ForcedKillButton.Size = new System.Drawing.Size(113, 77);
-            this.ForcedKillButton.TabIndex = 12;
-            this.ForcedKillButton.Text = "강제종료";
-            this.ForcedKillButton.UseVisualStyleBackColor = true;
-            this.ForcedKillButton.Click += new System.EventHandler(this.ForcedKillButton_Click);
+            this.LocalGroupBox.Controls.Add(this.localIPComboBox);
+            this.LocalGroupBox.Controls.Add(this.label3);
+            this.LocalGroupBox.Controls.Add(this.SOSPort1Label);
+            this.LocalGroupBox.Controls.Add(this.SOSPort1TextBox);
+            this.LocalGroupBox.Location = new System.Drawing.Point(206, 17);
+            this.LocalGroupBox.Name = "LocalGroupBox";
+            this.LocalGroupBox.Size = new System.Drawing.Size(156, 80);
+            this.LocalGroupBox.TabIndex = 15;
+            this.LocalGroupBox.TabStop = false;
+            this.LocalGroupBox.Text = "Local";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(67, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 12);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "SOS";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 12);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "IP";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // localIPComboBox
+            // 
+            this.localIPComboBox.FormattingEnabled = true;
+            this.localIPComboBox.Location = new System.Drawing.Point(39, 16);
+            this.localIPComboBox.Name = "localIPComboBox";
+            this.localIPComboBox.Size = new System.Drawing.Size(100, 20);
+            this.localIPComboBox.TabIndex = 17;
             // 
             // TelemetryRepeater
             // 
@@ -219,6 +289,10 @@ namespace TelemetryRepeater
             this.TmrSplitContainer.ResumeLayout(false);
             this.TmrInfoPanel.ResumeLayout(false);
             this.TmrInfoPanel.PerformLayout();
+            this.ClientGroupBox.ResumeLayout(false);
+            this.ClientGroupBox.PerformLayout();
+            this.LocalGroupBox.ResumeLayout(false);
+            this.LocalGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -238,6 +312,12 @@ namespace TelemetryRepeater
         private System.Windows.Forms.Label SOSPort1Label;
         private System.Windows.Forms.Button OpenDirectoryButton;
         private System.Windows.Forms.Button ForcedKillButton;
+        private System.Windows.Forms.GroupBox CrtGroupBox;
+        private System.Windows.Forms.GroupBox ClientGroupBox;
+        private System.Windows.Forms.GroupBox LocalGroupBox;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox localIPComboBox;
     }
 }
 
